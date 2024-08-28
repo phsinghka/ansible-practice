@@ -1,0 +1,19 @@
+---
+
+- name: Create and Delete Users
+  hosts: all
+  become: yes
+  vars_files:
+    - vars.yml
+
+  tasks:
+    - name: Ensure Users are present 
+      user: 
+        name: "{{item.name}}"
+        shell: "{{item.shell}}"
+        groups: "{{item.groups}}"
+        state: present
+      loop: "{{users}}"
+      tags: 
+        - users 
+

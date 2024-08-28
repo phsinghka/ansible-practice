@@ -1,0 +1,9 @@
+---
+
+users: 
+  - name: alice
+    shell: /bin/bash
+    groups: wheel
+  - name: bob
+    shell: /bin/bash
+    groups: users 
