@@ -1,0 +1,9 @@
+---
+
+- name: Test Ping Connections on all Host
+  hosts: all
+  remote_user: ec2-user
+
+  tasks: 
+    - name: Check Connectivity
+      ansible.builtin.ping:
