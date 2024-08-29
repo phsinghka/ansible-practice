@@ -1,0 +1,25 @@
+---
+
+- name: File Management Playbook
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create a Directory
+      file:
+        path: /tmp/ansible-dir
+        state: directory
+        mode: '0755'
+
+    - name: Copying a file
+      copy:
+        src: files/example.txt
+        dest: /tmp/ansible-dir/example.txt
+        mode: '0644'
+
+    - name: Generate a file from template
+      template: 
+        src: templates/example.j2
+        dest: /tmp/ansible-dir/example2.txt
+        mode: '0644'
+
