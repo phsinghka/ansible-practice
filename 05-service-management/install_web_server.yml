@@ -1,0 +1,10 @@
+---
+
+- name: Manage Services 
+  hosts: webservers
+  become: yes
+  tasks: 
+    - name: Install Nginx
+      yum: 
+        name: nginx
+        state: present

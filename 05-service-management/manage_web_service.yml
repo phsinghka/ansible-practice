@@ -1,0 +1,45 @@
+---
+
+- name: Managing Services on Hosts
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install Nginx
+      yum: 
+        name: nginx
+        state: present
+      notify:
+        - restart nginx
+
+    - name: Start & Enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Stop Nginx
+      service:
+        name: nginx
+        state: stopped
+      when: service_status == 'stop'
+
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+      when: service_status == 'start'
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: started
+      when: service_status == 'restart'
+
+  handlers:
+    - name: Restart Nginx
+      service: 
+        name: nginx
+        state: restarted
+        listen: "restart nginx"
