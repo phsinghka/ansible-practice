@@ -1,0 +1,6 @@
+---
+# vars file for package_manager
+
+package_manager:
+  debian: "apt"
+  redhat: "yum"

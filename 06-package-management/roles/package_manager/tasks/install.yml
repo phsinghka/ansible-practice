@@ -1,0 +1,14 @@
+---
+
+- name: Install packages on Debian-based systems
+  apt:
+    name: "{{ default_packages.debian }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'Debian'
+
+- name: Install packages on RedHat-based systems
+  yum:
+    name: "{{ default_packages.redhat }}"
+    state: present
+  when: ansible_os_family == 'RedHat'

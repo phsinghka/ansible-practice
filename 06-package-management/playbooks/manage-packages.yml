@@ -1,0 +1,7 @@
+---
+
+- name: Playbook manage packages
+  hosts: all
+  become: true
+  roles:
+    - roles/package_manager

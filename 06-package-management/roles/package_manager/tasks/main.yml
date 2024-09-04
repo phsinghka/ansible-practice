@@ -1,0 +1,8 @@
+---
+# tasks file for package_manager
+
+- name: Include install task
+  include_tasks: install.yml
+
+- name: Include update task
+  include_tasks: update.yml

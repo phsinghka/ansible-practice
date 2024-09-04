@@ -1,0 +1,6 @@
+---
+# defaults file for package_manager
+
+default_packages:
+  debian: ['apache2', 'curl']
+  redhat: ['httpd','curl']
