@@ -1,0 +1,6 @@
+---
+# vars file for webserver
+
+webserver: 'nginx'
+port: 80
+document_root: /var/www/html

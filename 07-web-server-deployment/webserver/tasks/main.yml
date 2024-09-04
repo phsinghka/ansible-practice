@@ -1,0 +1,31 @@
+---
+# tasks file for webserver
+
+- name: Uninstall Nginx
+  yum:
+    name: "{{webserver}}"
+    state: absent
+
+- name: Install Nginx
+  yum:
+    name: "{{webserver}}"
+    state: present
+  notify: Restart Nginx Server
+
+- name: Deploy Nginx Conf
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: Restart Nginx Server
+
+- name: Deploy index.html
+  template:
+    src: index.html.j2
+    dest: "{{ document_root }}/index.html"
+  notify: Restart Nginx Server
+  
+- name: Ensure Nginx is running
+  service:
+    name: "{{webserver}}"
+    state: started
+    enabled: true
