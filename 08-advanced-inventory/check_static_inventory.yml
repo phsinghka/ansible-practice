@@ -1,0 +1,10 @@
+---
+- name: Check Webserver Connectivity
+  hosts: tag_webserver_ubuntu
+  vars:
+    ansible_host: "{{ hostvars[inventory_hostname].public_ip_address | default(hostvars[inventory_hostname].private_ip_address) }}"
+    ansible_ssh_private_key_file: ../dbserver-key.pem
+  tasks:
+    - name: Ping all hosts
+      ansible.builtin.ping:
+
